@@ -1,0 +1,11 @@
+{
+    "seedNetwork"        : {"name" : "barabasi_albert_graph", 
+                            "args" : {"n" : 100, "m" : 3}},
+    "mutantsPerEpoch"    : 10,
+    "rewiringsPerMutant" : 10,
+    "stagnantEpochs"     : 30,
+    "attackStrategy"     : "degree", 
+    "sequentialMode"     : false,
+    "outFile"            : "network.graphml", 
+    "verbose"            : true
+}

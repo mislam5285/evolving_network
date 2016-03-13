@@ -1,5 +1,7 @@
+import community
 import json
 import networkx
+import numpy
 import operator
 import random
 import sys
@@ -161,9 +163,12 @@ def main():
     countDown = params["stagnantEpochs"]
     while countDown > 0:
         if params["verbose"]:
-            r = networkx.degree_assortativity_coefficient(G)
-            C = networkx.average_clustering(G)
-            print("{0:.4f}\t{1:.4f}\t{2:.4f}".format(R, r, C))
+            v = numpy.var(G.degree().values())               # degree variance
+            l = networkx.average_shortest_path_length(G)     # avg. path length
+            k = len(set(community.best_partition(G).values())) # communities
+            C = networkx.average_clustering(G)                 # clustering
+            r = networkx.degree_assortativity_coefficient(G)   # assortativity
+            print("%.4f %.4f %.4f %d %.4f %.4f" %(R, v, l, k, C, r))
         mutants = genMutants(G, params)
         prevR = R
         for mutant in mutants:

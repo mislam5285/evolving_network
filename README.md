@@ -8,7 +8,7 @@ Python code for evolving complex networks to maximize their [robustness](http://
 $ python evolving_network.py <params file>
 ```
 
-The parameters file (see [params.json.sample]) has the following JSON format:
+The parameters file (see [params.json.sample](params.json.sample)) has the following JSON format:
 ```bash
 {
     "seedNetwork"        : {"name" : "barabasi_albert_graph", 
@@ -22,9 +22,9 @@ The parameters file (see [params.json.sample]) has the following JSON format:
     "verbose"            : true
 }
 ```
-where `seedNetwork` specifies the seed network (see [https://github.com/swamiiyer/network] for details) to evolve; `mutantsPerEpoch` specifies the number of mutants to generate in each epoch; `rewiringsPerMutant` specifies the number of edge rewirings per mutant; `stagnantEpochs` specifies how many epochs to wait until termination, during which there is no increase in robustness; `attackStrategy` specifies the attack strategy (betweenness, closeness, degree, eigenvector, or random) to use to assess the robustness of the evolving network; `sequentialMode` specifies if the mode of attack is sequential or simultaneous; `outfile` specifies the name of the output file (the evolved network); and `verbose` specifies whether or not to output the properties of the network as it evolves.
+where `seedNetwork` specifies the seed network (click [here](https://github.com/swamiiyer/network) for details) to evolve; `mutantsPerEpoch` specifies the number of mutants to generate in each epoch; `rewiringsPerMutant` specifies the number of edge rewirings per mutant; `stagnantEpochs` specifies how many epochs to wait until termination, during which there is no increase in robustness; `attackStrategy` specifies the attack strategy (betweenness, closeness, degree, eigenvector, or random) to use in order to assess the robustness of the evolving network; `sequentialMode` specifies whether the mode of attack is sequential or simultaneous; `outfile` specifies the name of the output file which will store the evolved network; and `verbose` specifies whether or not to output the properties of the network as it evolves.
 
-`plots.py`: This script creates a file called `plots.pdf` showing the time evolution of various network properties, generated from the results produced by the `evolving_network.py` program. The names of the result files, one per replicate, are fed in via `STDIN`.
+`plots.py`: This script creates a file called `plots.pdf` showing the time evolution of various network properties (averaged over all the replicates) generated from the results produced by the `evolving_network.py` program (if `verbose` is `true`). The names of the result files, one per replicate, are fed in via `STDIN`.
 
 ```bash
 $ python plots.py < FILES

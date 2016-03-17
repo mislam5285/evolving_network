@@ -11,6 +11,8 @@ def main(args):
     replicate, are fed in via STDIN.
     """
     a = [open(line.strip(), "r").readlines() for line in sys.stdin.readlines()]
+    m = max([len(v) for v in a])
+    a = [v + [v[-1]] * (m - len(v)) for v in a]
     i = 0
     y1, Y1, Y1ERR = [], [], [] # robustness
     y2, Y2, Y2ERR = [], [], [] # degree variance

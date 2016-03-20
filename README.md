@@ -35,10 +35,10 @@ $ python plots.py < FILES
 ## Software Dependencies
 
 * [Community Detection Module](https://bitbucket.org/taynaud/python-louvain)
-* [Matplotlib](http://matplotlib.org/) (1.3.1)
-* [NetworkX](https://networkx.github.io/) (1.8.1)
-* [NumPy](http://www.numpy.org/) (1.8.2)
-* [Python](https://www.python.org/) (2.7.6)
+* [Matplotlib](http://matplotlib.org/)
+* [NetworkX](https://networkx.github.io/)
+* [NumPy](http://www.numpy.org/)
+* [Python](https://www.python.org/)
 
 ## Contact
 

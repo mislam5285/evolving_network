@@ -6,6 +6,7 @@
     "stagnantEpochs"     : 30,
     "attackStrategy"     : "degree", 
     "sequentialMode"     : false,
+    "maximizeRobustness" : false, 
     "outFile"            : "network.graphml", 
     "verbose"            : true
 }

@@ -174,10 +174,12 @@ def main():
         for mutant in mutants:
             mutantR = robustness(mutant, params["attackStrategy"], 
                                  params["sequentialMode"])
-            if mutantR > R:
+            if params["maximizeRobustness"] and mutantR > R or \
+               not params["maximizeRobustness"] and mutantR < R:
                 R = mutantR
                 G = mutant
-        if R > prevR:
+        if params["maximizeRobustness"] and R > prevR or \
+           not params["maximizeRobustness"] and R < prevR:
             countDown = params["stagnantEpochs"]
         else:
             countDown -= 1

@@ -18,11 +18,12 @@ The parameters file (see [params.json.sample](params.json.sample)) has the follo
     "stagnantEpochs"     : 30,
     "attackStrategy"     : "degree", 
     "sequentialMode"     : false,
+    "maximizeRobustness" : true, 
     "outFile"            : "network.graphml", 
     "verbose"            : true
 }
 ```
-where `seedNetwork` specifies the seed network to evolve (see details below); `mutantsPerEpoch` specifies the number of mutants to generate in each epoch; `rewiringsPerMutant` specifies the number of edge rewirings per mutant; `stagnantEpochs` specifies how many epochs to wait until termination, during which there is no increase in robustness; `attackStrategy` specifies the attack strategy (betweenness, closeness, degree, eigenvector, or random) to use in order to assess the robustness of the evolving network; `sequentialMode` specifies whether the mode of attack is sequential or simultaneous; `outfile` specifies the name of the output file which will store the evolved network; and `verbose` specifies whether or not to output the properties of the network as it evolves.
+where `seedNetwork` specifies the seed network to evolve (see details below); `mutantsPerEpoch` specifies the number of mutants to generate in each epoch; `rewiringsPerMutant` specifies the number of edge rewirings per mutant; `stagnantEpochs` specifies how many epochs to wait until termination, during which there is no increase in robustness; `attackStrategy` specifies the attack strategy (betweenness, closeness, degree, eigenvector, or random) to use in order to assess the robustness of the evolving network; `sequentialMode` specifies whether the mode of attack is sequential or simultaneous; `maximizeRobustness` specifies whether to maximize or minimize robustness of the evolving network; `outfile` specifies the name of the output file which will store the evolved network; and `verbose` specifies whether or not to output the properties of the network as it evolves.
 
 The `seedNetwork` parameter includes `name`, which can be any network construction method from [NetworkX](https://networkx.github.io/) (`barabasi_albert_graph` for example), and `args`, which are the arguments for that method (`n` and `m` for example).
 

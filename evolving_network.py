@@ -74,13 +74,15 @@ def eigenvectorAttack(G, sequentialMode):
     """
     Gcopy = G.copy()
     Vcount = len(Gcopy)
-    V = sorted(networkx.eigenvector_centrality(Gcopy).items(), 
+    V = sorted(networkx.eigenvector_centrality(Gcopy, 
+                                               max_iter = 1000).items(), 
                key = operator.itemgetter(1), reverse = True)
     R = 0.0
     for i in range(1, Vcount - 1):
         Gcopy.remove_node(V.pop(0)[0])
         if sequentialMode:
-            V = sorted(networkx.eigenvector_centrality(Gcopy).items(), 
+            V = sorted(networkx.eigenvector_centrality(
+                Gcopy, max_iter = 1000).items(), 
                        key = operator.itemgetter(1), reverse = True)
         giantComponent = max(networkx.connected_components(Gcopy), key = len)
         R += 1.0 * len(giantComponent) / Vcount

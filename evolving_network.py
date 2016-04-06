@@ -72,17 +72,29 @@ def eigenvectorAttack(G, sequentialMode):
     eigenvector-attack strategy and the given attack mode (sequential 
     or simultaneous).
     """
+
+    def eigenvector_centrality(G):
+        """
+        Returns a dictionary that maps vertex ids of G to their eigenvector
+        centrality values.
+        """
+        import igraph
+        ID = {v:i for i, v in enumerate(G.nodes())}
+        INVID = {i:v for i, v in enumerate(G.nodes())}
+        g = igraph.Graph()
+        g.add_vertices([ID[v] for v in G.nodes()])
+        g.add_edges([(ID[v[0]], ID[v[1]]) for v in G.edges()])
+        return {INVID[i]:v for i, v in enumerate(g.eigenvector_centrality())}
+
     Gcopy = G.copy()
     Vcount = len(Gcopy)
-    V = sorted(networkx.eigenvector_centrality(Gcopy, 
-                                               max_iter = 1000).items(), 
+    V = sorted(eigenvector_centrality(Gcopy).items(), 
                key = operator.itemgetter(1), reverse = True)
     R = 0.0
     for i in range(1, Vcount - 1):
         Gcopy.remove_node(V.pop(0)[0])
         if sequentialMode:
-            V = sorted(networkx.eigenvector_centrality(
-                Gcopy, max_iter = 1000).items(), 
+            V = sorted(eigenvector_centrality(Gcopy).items(), 
                        key = operator.itemgetter(1), reverse = True)
         giantComponent = max(networkx.connected_components(Gcopy), key = len)
         R += 1.0 * len(giantComponent) / Vcount

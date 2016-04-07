@@ -36,7 +36,6 @@ $ python plots.py < FILES
 ## Software Dependencies
 
 * [Community Detection Module](https://bitbucket.org/taynaud/python-louvain)
-* [igraph](http://igraph.org/)
 * [Matplotlib](http://matplotlib.org/)
 * [NetworkX](https://networkx.github.io/)
 * [NumPy](http://www.numpy.org/)

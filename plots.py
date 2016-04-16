@@ -5,7 +5,7 @@ import matplotlib.font_manager as font_manager
 
 def main(args):
     """
-    Creates a file called plots.pdf showing the time evolution of various
+    Creates a files (plot1-6.pdf) showing the time evolution of various
     network properties, generated from the results produced by the 
     evolving_network.py program. The names of the result files, one per 
     replicate, are fed in via STDIN.
@@ -52,57 +52,65 @@ def main(args):
 
     T = range(len(Y1))
     font_prop = font_manager.FontProperties(size = 12)
-    pylab.figure(1, figsize = (21, 10), dpi = 500)
 
     # robustness vs epoch
-    pylab.subplot(3, 2, 1)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"robustness $R$", fontproperties = font_prop)
-    pylab.errorbar(T, Y1, Y1ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y1, Y1ERR, color = "k", fmt = ".")
     pylab.plot(T, Y1, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
+    pylab.savefig("plot1.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.close(1)
 
     # degree variance vs epoch
-    pylab.subplot(3, 2, 2)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"degree variance $Var(k)$", fontproperties = font_prop)
-    pylab.errorbar(T, Y2, Y2ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y2, Y2ERR, color = "k", fmt = ".")
     pylab.plot(T, Y2, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
+    pylab.savefig("plot2.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.close(1)
 
     # average path length vs epoch
-    pylab.subplot(3, 2, 3)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"average path length $\ell$", fontproperties = font_prop)
-    pylab.errorbar(T, Y3, Y3ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y3, Y3ERR, color = "k", fmt = ".")
     pylab.plot(T, Y3, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
+    pylab.savefig("plot3.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.close(1)
 
     # number of communities vs epoch
-    pylab.subplot(3, 2, 4)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"number of communities $\kappa$", fontproperties = font_prop)
-    pylab.errorbar(T, Y4, Y6ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y4, Y6ERR, color = "k", fmt = ".")
     pylab.plot(T, Y4, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
+    pylab.savefig("plot4.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.close(1)
 
     # clustering coefficient vs epoch
-    pylab.subplot(3, 2, 5)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"clustering coefficient $C$", fontproperties = font_prop)
-    pylab.errorbar(T, Y5, Y5ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y5, Y5ERR, color = "k", fmt = ".")
     pylab.plot(T, Y5, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
+    pylab.savefig("plot5.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.close(1)
 
     # assortativity coefficient vs epoch
-    pylab.subplot(3, 2, 6)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"assortativity coefficient $r$", fontproperties = font_prop)
-    pylab.errorbar(T, Y6, Y4ERR, color = "k", fmt = ".")
+    #pylab.errorbar(T, Y6, Y4ERR, color = "k", fmt = ".")
     pylab.plot(T, Y6, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
-
-    pylab.savefig("plots.pdf", format = "pdf", bbox_inches = "tight")
+    pylab.savefig("plot6.pdf", format = "pdf", bbox_inches = "tight")
     pylab.close(1)
 
 if __name__ == "__main__":

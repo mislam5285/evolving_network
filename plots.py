@@ -86,8 +86,6 @@ def main(args):
     #pylab.errorbar(T, Y4, Y6ERR, color = "k", fmt = ".")
     pylab.plot(T, Y4, "k-", linewidth = 2, alpha = 0.6)
     pylab.xlim(0, max(T))
-    pylab.savefig("plot4.pdf", format = "pdf", bbox_inches = "tight")
-    pylab.close(1)
 
     # clustering coefficient vs epoch
     pylab.subplot(3, 2, 5)

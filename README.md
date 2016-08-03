@@ -27,7 +27,7 @@ where `seedNetwork` specifies the seed network to evolve (see details below); `m
 
 The `seedNetwork` parameter includes `name`, which can be any network construction method from [NetworkX](https://networkx.github.io/) (`barabasi_albert_graph` for example), and `args`, which are the arguments for that method (`n` and `m` for example).
 
-`plots.py`: This script creates a file called `plots.pdf` showing the time evolution of various network properties (averaged over all the replicates) generated from the results produced by the `evolving_network.py` program (if `verbose` is `true`). The names of the result files, one per replicate, are fed in via `STDIN`.
+`plots.py`: This script creates plots (as PDF files) showing the time evolution of various network properties (averaged over all the replicates) generated from the results produced by the `evolving_network.py` program (if `verbose` is `true`). The names of the result files, one per replicate, are fed in via `STDIN`.
 
 ```bash
 $ python plots.py < FILES
@@ -35,7 +35,7 @@ $ python plots.py < FILES
 
 ## Software Dependencies
 
-* [Community Detection Module](https://bitbucket.org/taynaud/python-louvain)
+* [igraph](http://igraph.org/)
 * [Matplotlib](http://matplotlib.org/)
 * [NetworkX](https://networkx.github.io/)
 * [NumPy](http://www.numpy.org/)

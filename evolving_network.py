@@ -1,4 +1,4 @@
-import community
+import igraph
 import json
 import networkx
 import numpy
@@ -73,19 +73,26 @@ def eigenvectorAttack(G, sequentialMode):
     or simultaneous).
     """
 
+    def eigenvector_centrality(G):
+        """
+        Returns a map that maps a vertex id to the eigenvector centrality of 
+        that vertex, calculated using igraph.
+        """
+        tempG = igraph.Graph()
+        tempG.add_vertices(G.nodes())
+        tempG.add_edges(G.edges())
+        return {tempG.vs[i]["name"]: v for i, v in 
+                enumerate(tempG.eigenvector_centrality())}
+
     Gcopy = G.copy()
     Vcount = len(Gcopy)
-    V = sorted(networkx.eigenvector_centrality(Gcopy,
-                                               max_iter = 1000, 
-                                               tol = 1e-2).items(), 
+    V = sorted(eigenvector_centrality(Gcopy).items(), 
                key = operator.itemgetter(1), reverse = True)
     R = 0.0
     for i in range(1, Vcount - 1):
         Gcopy.remove_node(V.pop(0)[0])
         if sequentialMode:
-            V = sorted(networkx.eigenvector_centrality(Gcopy,
-                                                       max_iter = 1000, 
-                                                       tol = 1e-2).items(), 
+            V = sorted(eigenvector_centrality(Gcopy).items(), 
                        key = operator.itemgetter(1), reverse = True)
         giantComponent = max(networkx.connected_components(Gcopy), key = len)
         R += 1.0 * len(giantComponent) / Vcount
@@ -170,10 +177,9 @@ def main():
         if params["verbose"]:
             v = numpy.var(G.degree().values())               # degree variance
             l = networkx.average_shortest_path_length(G)     # avg. path length
-            k = len(set(community.best_partition(G).values())) # communities
             C = networkx.average_clustering(G)                 # clustering
             r = networkx.degree_assortativity_coefficient(G)   # assortativity
-            print("%.4f %.4f %.4f %d %.4f %.4f" %(R, v, l, k, C, r))
+            print("%.4f %.4f %.4f %.4f %.4f" %(R, v, l, C, r))
         mutants = genMutants(G, params)
         prevR = R
         for mutant in mutants:

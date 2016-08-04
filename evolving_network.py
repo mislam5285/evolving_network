@@ -79,9 +79,9 @@ def eigenvectorAttack(G, sequentialMode):
         that vertex, calculated using igraph.
         """
         tempG = igraph.Graph()
-        tempG.add_vertices(G.nodes())
-        tempG.add_edges(G.edges())
-        return {tempG.vs[i]["name"]: v for i, v in 
+        tempG.add_vertices([str(v) for v in G.nodes()])
+        tempG.add_edges([(str(u), str(v)) for u, v in G.edges()])
+        return {int(tempG.vs[i]["name"]): v for i, v in 
                 enumerate(tempG.eigenvector_centrality())}
 
     Gcopy = G.copy()

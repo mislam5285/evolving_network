@@ -24,8 +24,8 @@ def main(args):
         y1.append(toks[0])
         y2.append(toks[1])
         y3.append(toks[2])
-        y4.append(toks[4])
-        y5.append(toks[5])
+        y4.append(toks[3])
+        y5.append(toks[4])
         i += 1
         if i == len(a):
             i = 0
@@ -50,7 +50,7 @@ def main(args):
 
 
     # robustness vs epoch
-    pylab.figure(1, figsize = (5, 7), dpi = 500)
+    pylab.figure(1, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"robustness $R$", fontproperties = font_prop)
     #pylab.errorbar(T, Y1, Y1ERR, color = "k", fmt = ".")
@@ -60,7 +60,7 @@ def main(args):
     pylab.close(1)
 
     # degree variance vs epoch
-    pylab.figure(2, figsize = (5, 7), dpi = 500)
+    pylab.figure(2, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"degree variance $Var(k)$", fontproperties = font_prop)
     #pylab.errorbar(T, Y2, Y2ERR, color = "k", fmt = ".")
@@ -70,7 +70,7 @@ def main(args):
     pylab.close(2)
 
     # average path length vs epoch
-    pylab.figure(3, figsize = (5, 7), dpi = 500)
+    pylab.figure(3, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"average path length $\ell$", fontproperties = font_prop)
     #pylab.errorbar(T, Y3, Y3ERR, color = "k", fmt = ".")
@@ -80,7 +80,7 @@ def main(args):
     pylab.close(3)
 
     # clustering coefficient vs epoch
-    pylab.figure(4, figsize = (5, 7), dpi = 500)
+    pylab.figure(4, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"clustering coefficient $C$", fontproperties = font_prop)
     #pylab.errorbar(T, Y4, Y4ERR, color = "k", fmt = ".")
@@ -90,7 +90,7 @@ def main(args):
     pylab.close(4)
 
     # assortativity coefficient vs epoch
-    pylab.figure(5, figsize = (5, 7), dpi = 500)
+    pylab.figure(5, figsize = (7, 5), dpi = 500)
     pylab.xlabel(r"epoch $t$", fontproperties = font_prop)
     pylab.ylabel(r"assortativity coefficient $r$", fontproperties = font_prop)
     #pylab.errorbar(T, Y5, Y5ERR, color = "k", fmt = ".")
